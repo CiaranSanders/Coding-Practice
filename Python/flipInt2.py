@@ -2,6 +2,7 @@
 # Date: October 8, 2019
 # Second attempt at the problem as described in flipInt.py, however done in
 # fewer lines
+#test
 class flipInt(object):
 
     def flip_int(self):
