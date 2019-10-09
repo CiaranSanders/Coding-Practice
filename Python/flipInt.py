@@ -1,40 +1,38 @@
 # Ciaran Sanders
 # Date: October 8, 2019
-# First Python program. Given inputed integer, flip the digits.
-# Preserve the sign of the number.
-while True:
-    string = raw_input("Please enter an integer (q to quit): ")
-    size = len(string)
-    start = 0
-    temp = ""
-    end = size - 1
+# flip the user inputed integer
 
-    if string == 'q':
-        break
+class flipInt(object):
 
-    # convert string to list
-    list = []
-    for s in string:
-        list.append(s)
+    def flip_int(self):
+        """Flips the inputed integer."""
+        while True:
+            negative = False
+            user_input = input("Please enter an integer (q to quit): ")
 
-    # if negative, skip minus sign
-    if list[0] == "-":
-        start = start + 1
+            try:
+                int(user_input)
+            except:
+                print("Please enter a valid integer")
+                continue
 
-    if (size % 2) != 0:
-        size = size + 1
+            if user_input == 'q':
+                break
 
-    # flip all necessary characters
-    for i in range(start, size//2):
-        temp = list[i]
-        list[i] = list[end]
-        list[end] = temp
-        end = end - 1
+            # remove negative sign
+            if user_input[0] == '-':
+                negative = True
+                user_input = user_input[1:]
 
-    str = ""
-    for l in list:
-        str = str + l
+            # reverse the input
+            user_input = user_input[::-1]
 
-    flipped = int(str)
+            # add back negative sign
+            if negative is True:
+                user_input = '-' + user_input
 
-    print "Flipped integer: ", flipped
+            print("Flipped int: ", user_input)
+
+
+if __name__ == "__main__":
+    flipInt().flip_int()
