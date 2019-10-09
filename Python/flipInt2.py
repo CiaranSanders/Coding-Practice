@@ -1,23 +1,38 @@
 # Ciaran Sanders
 # Date: October 8, 2019
-# Second attemp at the problem as described in flipInt.py, however done in
+# Second attempt at the problem as described in flipInt.py, however done in
 # fewer lines
-while True:
-    input = raw_input("Please enter an integer (q to quit): ")
-    size = len(input)
-    negative = False
+class flipInt(object):
 
-    if input == 'q':
-        break
+    def flip_int(self):
+        """Flips the inputed integer."""
+        while True:
+            negative = False
+            user_input = input("Please enter an integer (q to quit): ")
 
-    if input[0] == '-':
-        negative = True
-        input = input[1:]
+            try:
+                int(user_input)
+            except:
+                print("Please enter a valid integer")
+                continue
 
-    # reverse the input
-    input = input[::-1]
+            if user_input == 'q':
+                break
 
-    if negative is True:
-        input = '-' + input
+            # remove negative sign
+            if user_input[0] == '-':
+                negative = True
+                user_input = user_input[1:]
 
-    print "Flipped int: " , input
+            # reverse the input
+            user_input = user_input[::-1]
+
+            # add back negative sign
+            if negative is True:
+                user_input = '-' + user_input
+
+            print ("Flipped int: " , user_input)
+
+
+if __name__ == "__main__":
+    flipInt().flip_int()
