@@ -1,23 +1,29 @@
 # Ciaran Sanders
 # Date: October 8, 2019
-# Second attemp at the problem as described in flipInt.py, however done in
-# fewer lines
-while True:
-    input = raw_input("Please enter an integer (q to quit): ")
-    size = len(input)
-    negative = False
+# flip the inputed integer, formatted for submission on leet code
+#test
+class flipInt(object):
 
-    if input == 'q':
-        break
+    def reverse(self, x: int) -> int:
+        """Flips the inputed integer."""
+        negative = False
 
-    if input[0] == '-':
-        negative = True
-        input = input[1:]
+        strx = str(x)
 
-    # reverse the input
-    input = input[::-1]
+        # remove negative sign
+        if strx[0] == '-':
+            negative = True
+            strx = strx[1:]
 
-    if negative is True:
-        input = '-' + input
+        # reverse the input
+        strx = strx[::-1]
 
-    print "Flipped int: " , input
+        # add back negative sign
+        if negative is True:
+            strx = '-' + strx
+
+        return int(strx)
+
+if __name__ == "__main__":
+    num = flipInt().reverse(1234)
+    print(num)
