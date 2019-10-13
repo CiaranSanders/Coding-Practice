@@ -18,10 +18,37 @@ class Zigzag(object):
         :rtype: str
         """
         zigzag = ""
-        inc = numRows + (numRows - 2)
         row = 0
-        for x in range(row, len(s), inc):
+        type = 0
+        while row < numRows:
+            # for x in range(row, len(s), inc1):
+            #     zigzag = zigzag + s[x]
+            x = row
+            inc2 = 2*row
+            inc1 = numRows + (numRows - 2) - inc2
             zigzag = zigzag + s[x]
+            while x < len(s):
+                if type == 0:
+                    type = 1
+                    #do inc 1
+                    if inc1 == 0:
+                        continue
+
+                    else:
+                        x = x + inc1
+                        if x < len(s):
+                            zigzag = zigzag + s[x]
+                elif type == 1:
+                    type = 0
+                    #do inc 2
+                    if inc2 == 0:
+                        continue
+
+                    else:
+                        x = x + inc2
+                        if x < len(s):
+                            zigzag = zigzag + s[x]
+            row = row + 1
 
         return zigzag
 
