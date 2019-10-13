@@ -19,15 +19,24 @@ class Zigzag(object):
         """
         zigzag = ""
         row = 0
-        type = 0
+        if numRows > len(s) | (numRows == 0) | len(s) == 0:
+            return s
         while row < numRows:
             # for x in range(row, len(s), inc1):
             #     zigzag = zigzag + s[x]
+            type = 0
             x = row
             inc2 = 2*row
-            inc1 = numRows + (numRows - 2) - inc2
+            if numRows != 1:
+                inc1 = numRows + (numRows - 2) - inc2
+            else:
+                inc1 = numRows
             zigzag = zigzag + s[x]
+            print("inc1" , inc1)
+            print("inc2" , inc2)
+            print("=====")
             while x < len(s):
+                # print(x)
                 if type == 0:
                     type = 1
                     #do inc 1
