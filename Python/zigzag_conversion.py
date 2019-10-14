@@ -17,47 +17,39 @@ class Zigzag(object):
         :type numRows: int
         :rtype: str
         """
-        zigzag = ""
-        row = 0
-        if numRows > len(s) | (numRows == 0) | len(s) == 0:
+        zigzag = ""  # string to be returned
+        row = 0  # current row
+
+        if numRows >= len(s) | (numRows == 0) | len(s) == 0:
             return s
+
         while row < numRows:
-            # for x in range(row, len(s), inc1):
-            #     zigzag = zigzag + s[x]
-            type = 0
             x = row
+            type = 0  # determines typ of increment to do; 0->inc1, 1->inc2
             inc2 = 2*row
+
             if numRows != 1:
                 inc1 = numRows + (numRows - 2) - inc2
             else:
                 inc1 = numRows
-            zigzag = zigzag + s[x]
-            print("inc1" , inc1)
-            print("inc2" , inc2)
-            print("=====")
+
+            zigzag += s[x]
             while x < len(s):
-                # print(x)
+                # do increment 1
                 if type == 0:
                     type = 1
-                    #do inc 1
-                    if inc1 == 0:
-                        continue
-
-                    else:
-                        x = x + inc1
+                    if inc1 != 0:
+                        x += inc1
                         if x < len(s):
-                            zigzag = zigzag + s[x]
+                            zigzag += s[x]
+                # do increment 2
                 elif type == 1:
                     type = 0
-                    #do inc 2
-                    if inc2 == 0:
-                        continue
-
-                    else:
-                        x = x + inc2
+                    if inc2 != 0:
+                        x += inc2
                         if x < len(s):
-                            zigzag = zigzag + s[x]
-            row = row + 1
+                            zigzag += s[x]
+            row += 1
 
         return zigzag
 
@@ -67,3 +59,11 @@ if __name__ == "__main__":
     numRows = int(input("Enter number of rows: "))
     Z = Zigzag()
     print(Z.convert(s, numRows))
+
+
+# My Solution involves using two different typed of increments to iterate
+# across the pattern created by the zig zag. It is a fairly complicated solution
+# to try and describe in a text document, but essentially if you draw out
+# some zig zagged strings, you will notice each row follows a pattern of
+# incrementing by two different intervals on every other character (with respect
+# to the indices of the string)
