@@ -1,11 +1,10 @@
-from typing import List
 from collections import Counter
-from math import ceil
+from typing import List
 
 class Solution:
     def minSetSize(self, arr: List[int]) -> int:
         count = Counter(arr)
-        half = ceil(len(arr) / 2)
+        half = len(arr) / 2
         num = 0
         total = 0
         for val, count in count.most_common():
