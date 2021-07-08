@@ -7,7 +7,7 @@ class Solution:
         # this is the bad solution! doesn't leverage the fact that the matrix is sorted
         # ok, but this solution actually runs so much faster!!! which is contrary to 
         #   what i thought
-        return sorted([num for sublist in matrix for num in sublist])[k-1]
+        # return sorted([num for sublist in matrix for num in sublist])[k-1]
 
         # create a heap, storing tuples of (val, index)
         # n = len(matrix)
@@ -106,10 +106,15 @@ if __name__ == '__main__':
     for matrix, k in tests:
         print(sol.kthSmallest(matrix, k))
     # test massive matrix
-    arr = [[0 for i in range(10000)] for j in range(10000)]
-    arr[-1][-1] = 9
+    n = 10000
+    arr = []
+    for i in range(0, n - 1):
+        temp = []
+        for j in range(0, n - 1):
+            temp.append(j + i)
+        arr.append(temp)
     start = time.time()
-    print(sol.kthSmallest(arr, 100000000))
+    print(sol.kthSmallest(arr, 10000000))
     end = time.time()
     print(f'time elapsed: {end - start}')
 
