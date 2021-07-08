@@ -105,7 +105,7 @@ if __name__ == '__main__':
     ]
     for matrix, k in tests:
         print(sol.kthSmallest(matrix, k))
-    test massive matrix
+    # test massive matrix
     arr = [[0 for i in range(10000)] for j in range(10000)]
     arr[-1][-1] = 9
     start = time.time()
